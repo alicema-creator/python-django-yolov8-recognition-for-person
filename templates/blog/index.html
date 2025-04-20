@@ -1,0 +1,221 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" rel="external nofollow" >
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<title>login</title>
+<style type="text/css">
+
+    #box4{
+        background-color: #5ACCC9;
+        width: 500px;
+        height: 50px;
+        margin:auto ;
+        float: left;
+        position:absolute;
+        top: -290;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-style:none;
+        border-radius: 5px;
+
+    }
+
+    #box1{
+        background-color: #8C7EF3;
+        width: 500px;
+        height: 300px;
+        margin:auto ;
+        float: inline;
+        position:relative;
+        top: 10px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-style:none;
+        border-radius: 5px;
+
+    }
+    .p1{
+        color: black;
+        font-size: 20px;
+        margin-left:20px;
+        margin-top: 25px;
+        font-family: microsoft yahei;
+        font-weight: normal;
+        text-align: left;
+        line-height:23px;
+        position: center;
+
+    }
+
+    #box2{
+        background-color: #8C7EF3;
+        width: 120px;
+        height: 250px;
+        margin-top:20px;
+        margin-left:70px;
+        float: left;
+        text-align: center;
+        position:static;
+    }
+
+    #box3{
+        background-color: #8C7EF3;
+        width: 230px;
+        height: 250px;
+        margin-top:20px;
+        float: left;
+        text-align: center;
+        position:static;
+    }
+
+
+    #input0{
+        width: 200px;
+        height: 30px;
+        margin-top:20px;
+    }
+
+    #input1{
+        width: 100px;
+        height: 50px;
+        margin: 20px;
+        font-family: microsoft yahei;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    #input2{
+        width: 130px;
+        height: 50px;
+        margin: 0px;
+        font-family: microsoft yahei;
+        font-weight: normal;
+        font-size: 16px;
+        float: left;
+        border-width: 0px;
+        border-radius: 3px;
+    }
+
+    #pgheader1{
+        background: rgb(51,51,51);
+        width: 100%;
+        min-width: 960px;
+        height: 35px;
+        margin: 0px auto;
+        width: 100%;
+        position: relative;z-index:5;
+        border-color: rgb(255, 255, 255);
+        border-width: 0px;
+        border-style: solid;
+        }
+    #pgheader2{
+        padding-top: 10px;
+        padding-right: 0px;
+        display: inline-block;
+        z-index: 1000;
+        color: rgb(255,255,255);
+        font-size:15px;
+
+    }
+        form {
+        text-align: center;
+    }
+    #fileInput {
+        display: none;
+    }
+    #selectedFile {
+        margin-top: 10px;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+</head>
+<body style="background-color: #5ACCC9;">
+    <div style="width:100%;height:100%;text-align: center;">
+
+            <div style="width: 100%; display: flex; justify-content: space-between;background-color:#3FE3E1" >
+                <a style="margin-left: 20px;padding: 10px;  color: #333; text-decoration: none;">欢迎光临</a>
+                <div style="float: right;display: flex;justify-content: right;">
+                    <a id="loginS" style="margin-right: 20px;padding: 10px;  color: #333; text-decoration: none;" href="/accounts/logout/" >当前用户名：{{user}}</a>
+                    <a style="margin-right: 20px;padding: 10px;  color: #333; text-decoration: none;" href="/accounts/logout/">注销</a>
+                    <a style="margin-right: 20px;padding: 10px;  color: #333; text-decoration: none;" href="/accounts/login/">登录</a>
+                </div>
+            </div>
+
+
+
+
+            <DIV ID="pgheader1";><a ID="pgheader2" >XXX管理网站</a></DIV>
+            <div>
+                <h1 style="font-family:'Microsoft YaHei';font-size:30px";>垃圾识别系统</h1>
+                <h1 style="font-family:'Microsoft YaHei';font-size:20px";>Click on the button to see image</h1>
+
+                <!-- 按钮1 -->
+                <div style="position:static;">
+
+<!--                    <div style="display: flex; justify-content: center; align-items: center;">-->
+<!--                        <form action="" method="post" enctype="multipart/form-data" style="display: flex; justify-content: center; align-items: center; gap: 10px;">-->
+<!--                            {% csrf_token %}-->
+<!--                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">-->
+<!--                                <input type="file" name="file" id="fileInput" style="display:none;">-->
+<!--                                <button type="button" onclick="chooseFile()">上传文件</button>-->
+<!--                                <p id="selectedFile" style="display: none;"></p>-->
+<!--                            </div>-->
+<!--                            <input type="submit" name="saveFile" value="保存" style="margin: 0;">-->
+<!--                        </form>-->
+<!--                    </div>-->
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="file" id="fileInput" style="display:none;">
+                            <button type="button" onclick="chooseFile()" id="input1">上传文件</button>
+                            <p id="selectedFile"></p>
+                            <input style="margin-left: 20px;" type="submit" name="saveFile" value="保存" id="input1">
+                        </form>
+
+                        {% for ii in allPhoto2  %}
+                           <li>{{ ii.image_data }}</li>
+                        {% endfor %}
+                        <button type="button" onclick="show()" id="input1">原图片显示</button>
+
+
+                </div>
+
+                <!-- Add id to image -->
+                <div id="box1">
+                    <img id="image" src="" alt="GFG image" width="300" height="300"/>
+                </div>
+
+                <!-- 按钮2 -->
+                <div style="position:static;">
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <input type="submit" name="recognButton" value="运行识别"  id="input1">
+                    </form>
+                    <button type="button" onclick="show2()" id="input1">显示识别图片</button>
+                </div>
+
+                <!-- Add id to image -->
+                <div id="box1">
+                    <img id="image2" src="" alt="GFG image" width="300" height="300"/>
+                    <p id="imageName" style="font-size: 18px;font-family: 'microsoft yahei'">识别名称: <span id="imageNameSpan">{{imageName}}</span></p>
+                </div>
+
+
+
+            </div>
+            <DIV ID="pgheader1" style="position:relative;margin-top: 60px;"><a ID="pgheader2" >地址：xxxxx</a></DIV>
+    </div>
+
+    
+
+
+</body>
+</html>
+
